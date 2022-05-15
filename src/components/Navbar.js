@@ -1,5 +1,7 @@
 import React from 'react';
 import {  Link } from "react-router-dom";
+import AccountInfo from './AccountInfo';
+
 const Navbar= () =>{
   // return (
   // <div>
@@ -8,6 +10,23 @@ const Navbar= () =>{
   //   </li>
   // </div>
   // );
+/*  const { token } = useToken();
+
+  fetch('https://localhost:9001/novel/1')
+  .then((response) => response.json())
+  .then((json) => console.log(json));
+  
+  const account = {
+    id = null,
+    name = null,
+    email = null,
+    roleName = null
+  };*/
+  ///
+  //fetch('https://localhost:9001/account/info?token='+token)
+  //.then((response) => response.json())
+  //.then((json) => console.log(json));
+
   return(
   <nav className="navbar navbar-expand-lg navbar-light bg-light">
   <a className="navbar-brand" href="/">
@@ -36,6 +55,9 @@ const Navbar= () =>{
         <a className="nav-link" href="/AddNovel">
           Add Novel
         </a>
+      </li>
+      <li className="login">
+        return<AccountInfo/>
       </li>
     </ul>
   </div>
