@@ -1,42 +1,27 @@
-import React, { Component } from "react";
+import React, { useState,useEffect } from "react";
 import useToken from './useToken';
 
-function Token(){
-    const token = useToken().token;
-    return token;
-}
+// function Token(){
+//     const token = useToken().token;
+//     return token;
+// }
 
-export default class AccountInfo extends Component{
-    state = {
-        id: null,
-        name: null,
-        email: null,
-        roleName: null,
-        token: Token()
-    }
-    
-    componentDidMount(){
-        fetch('https://localhost:9001/account/info?token='+this.state.token)
-        .then((response) => response.json())
-        .then(
-            (response) => {
-                this.setState({
-                    id: response.id,
-                    name: response.name,
-                    email: response.email,
-                    roleName: response.roleName,
-                });
-            }
-        )
-    }
+export default function AccountInfo(){
+    const { token, setToken } = useToken();
+    const [accountinfo, setAccountInfo] = useState(); 
+    let fetchUrl = 'https://localhost:9001/account/info?token='+token;
+    console.log(fetchUrl);
+    useEffect(() => {
+        fetch(fetchUrl)
+         .then((response) => response.json())
+         .then(response=>setAccountInfo(response))
+    }, []);
 
-    render(){
-        return(
-            <a className="nav-link" href="/Login">
-            {
-            this.state.id
-            }
-            </a>
-        )
-    }
+    return(
+        <a className="nav-link" href="/Login">
+        {
+        accountinfo[0]
+        }
+        </a>
+    )
 }
