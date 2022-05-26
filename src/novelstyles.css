@@ -1,0 +1,125 @@
+.container-vspace {
+    width: 80%;
+    padding: 16px;
+    border-radius: 6px;
+    background-color: rgba(255,255,255,.9);
+}
+
+.section-header {
+    text-align: left;
+    border-bottom: 1px solid #e7e7e7;
+    padding-bottom: 6px;
+    margin-bottom: 16px;
+    vertical-align: middle;
+    line-height: 1.4;
+    position: relative;
+    display: flex;
+    border-color: #e1e3e5;
+}
+
+.section-header .getmorebtn {
+    font-size: 16px;
+    border: none;
+    padding: 3px 0;
+    color: #859dec;
+    text-decoration: none;
+}
+
+.section-body {
+    position: relative;
+    font-size: 14px;
+}
+
+.novel-list {
+    margin-left: calc(-1*20px);
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.novel-item {
+    width: calc((100%/6) - 20px);
+    margin-left: 20px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.novel-item a {
+    display: block;
+    cursor: pointer;
+    outline: 0;
+    text-decoration: none;
+}
+
+.novel-cover {
+    display: block;
+    font-size: 0;
+    margin-bottom: .425rem;
+    background-color: rgba(215,216,224,.32);
+    box-shadow: 0 0 1px rgb(0 0 0 / 40%);
+    padding-top: 134%;
+    overflow: hidden;
+    position: relative;
+    border-radius: 4px;
+    margin: 0;
+    padding: 0;
+}
+
+.novel-cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /*position: absolute;*/ /* Has issues?? */
+    left: 0;
+    top: 0;
+    border-radius: 4px;
+    color: transparent;
+}
+
+.novel-cover .score {
+    font-size: 12px;
+    padding: 2px 4px 2px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    line-height: 1;
+    z-index: 10;
+    background-color: #000;
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 0 6px 0 0;
+    font-style: normal;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+}
+
+.novel-title {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 4px;
+    color: #2a2e2e;
+}
+
+.novel-title .text2row {
+    overflow: hidden;
+}
+
+.novel-list .novel-item .novel-stats {
+    font-size: 13px;
+    line-height: 1.3;
+    color: #565656;
+    display: block;
+}
+
+.novel-list .novel-item .novel-stats span {
+    display: block;
+}
+    
+/* Provide sufficient contrast against white background */
+    a {
+  color: #0366d6;
+}
