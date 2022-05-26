@@ -7,6 +7,7 @@ import Novels from "./pages/Novels"
 import AddNovel from "./pages/AddNovel"
 import Login from "./pages/Login"
 import useToken from './components/useToken';
+import Novel from "./pages/Novel"
 
 function App() {
   
@@ -23,6 +24,7 @@ function App() {
         <Route path='/' exact component={Novels} />
         <Route path='/novels' component={Novels} />
         <Route path='/addnovel' component={AddNovel} />
+        <Route path='/novel/:id' component={Novel} />
       </Switch>
     </Router>
   );

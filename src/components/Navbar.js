@@ -1,32 +1,18 @@
-import React from 'react';
-import {  Link } from "react-router-dom";
-import AccountInfo from './AccountInfo';
+import React, { useState,useEffect,useLayoutEffect }  from 'react';
+import "../styles.css";
+import useToken from './useToken';
 
+var name = 'name';
 const Navbar= () =>{
-  // return (
-  // <div>
-  //   <li>
-  //     <Link to="/">Novels</Link>
-  //   </li>
-  // </div>
-  // );
-/*  const { token } = useToken();
-
-  fetch('https://localhost:9001/novel/1')
-  .then((response) => response.json())
-  .then((json) => console.log(json));
-  
-  const account = {
-    id = null,
-    name = null,
-    email = null,
-    roleName = null
-  };*/
-  ///
-  //fetch('https://localhost:9001/account/info?token='+token)
-  //.then((response) => response.json())
-  //.then((json) => console.log(json));
-
+  const { token, setToken } = useToken();
+    const [info, setAccountInfo] = useState(); 
+    
+    useEffect(() => {
+        fetch('https://localhost:9001/account/info?token='+token)
+         .then((response) => response.json())
+         .then(response=>setAccountInfo(response))
+    }, []);
+    console.log(info)
   return(
   <nav className="navbar navbar-expand-lg navbar-light bg-light">
   <a className="navbar-brand" href="/">
@@ -57,11 +43,12 @@ const Navbar= () =>{
         </a>
       </li>
       <li className="login">
-        return<AccountInfo/>
+        {(info !== undefined) ? info.name : name}
       </li>
     </ul>
   </div>
-</nav>
-);
+  </nav>
+  );
 }
+
 export default Navbar;

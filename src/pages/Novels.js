@@ -9,6 +9,9 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import "../styles.css";
+import { useTabsList } from '@mui/base';
+import "../novelstyles.css";
+import { Link } from "react-router-dom";
 
 // const columns = [
 //   { field: 'id', headerName: 'ID' },
@@ -17,6 +20,16 @@ import "../styles.css";
 //   { field: 'coverImage', headerName: 'CoverImage', width: 300 },
 //   { field: 'description', headerName: 'Description', width: 300 }
 // ]
+function imageExists(image_url){
+
+  var http = new XMLHttpRequest();
+
+  http.open('HEAD', image_url, false);
+  http.send();
+
+  return http.status != 404;
+
+}
 
 const Novels= () => {
 
@@ -32,6 +45,7 @@ const Novels= () => {
  console.log(tableData)
 
   return (
+    /*
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
@@ -59,12 +73,47 @@ const Novels= () => {
         </TableBody>
       </Table>
     </TableContainer>
+    */
     // <div style={{ height: 700, width: '100%' }}>
     //   <DataGrid
     //     rows={tableData}
     //     columns={columns}
     //   />
     // </div>
+    <section className="container-vspace">
+    <div className="section-body" id="all-novels-section">
+        <ul className="novel-list">
+            {tableData.map((column) => (
+            <li className="novel-item">
+                {/* <a title={column.title} onClick={() => Novels(column.id)} >
+                    <h4 className="novel-title text2row">{column.title}</h4> */}
+                    <Link className="novel-title text2row" to={`/novel/${column.id}`}>
+                      {column.title}
+                      {/* <h4 className="novel-title text2row">{column.title}</h4> */}
+                      <figure className="novel-cover">
+                      {
+                        (imageExists(column.coverImage) == true) ? 
+                          <img className="novel-cover-img" src={column.coverImage} />
+                          : <img className="novel-cover-img" src={'https://www.routledge.com/img/covers/image-not-available.png'} />
+                      }
+                    </figure>
+                    </Link>
+                    {/* <figure className="novel-cover">
+                      {
+                        (imageExists(column.coverImage) == true) ? 
+                          <img className="novel-cover-img" src={column.coverImage} />
+                          : <img className="novel-cover-img" src={'https://www.routledge.com/img/covers/image-not-available.png'} />
+                      }
+                    </figure>
+                </a> */}
+                <div className="novel-stats">
+                    {column.description}
+                </div>
+            </li>
+            ))}
+        </ul>
+    </div>
+</section>
   )
 }
 
