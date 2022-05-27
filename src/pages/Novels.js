@@ -1,15 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from "react";
-import { DataGrid } from '@mui/x-data-grid'
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
 import "../styles.css";
-import { useTabsList } from '@mui/base';
 import "../novelstyles.css";
 import { Link } from "react-router-dom";
 
@@ -27,7 +18,7 @@ function imageExists(image_url){
   http.open('HEAD', image_url, false);
   http.send();
 
-  return http.status != 404;
+  return http.status !== 404;
 
 }
 
@@ -92,7 +83,7 @@ const Novels= () => {
                       {/* <h4 className="novel-title text2row">{column.title}</h4> */}
                       <figure className="novel-cover">
                       {
-                        (imageExists(column.coverImage) == true) ? 
+                        (imageExists(column.coverImage) === true) ? 
                           <img className="novel-cover-img" src={column.coverImage} />
                           : <img className="novel-cover-img" src={'https://www.routledge.com/img/covers/image-not-available.png'} />
                       }
