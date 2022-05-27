@@ -1,11 +1,19 @@
 # Run app met Docker
-Maken van de docker image:
+
+## Zorg dat de api en database ook als container runnen. De instructies hiervoor kun je vinden op https://github.com/KevinvdHoogenhof/novelsite-backend#readme
+
+## Zelf maken van een docker image:
 docker build -t novelsite/frontend .
 
 Aanmaken van de container:
-! zorg dat de api en database ook als container runnen. De instructies hiervoor kun je vinden op https://github.com/KevinvdHoogenhof/novelsite-backend#readme
+
 docker run -d --rm -v /app/node_modules -p 3000:3000 -e CHOKIDAR_USEPOLLING=true --name frontend novelsite/frontend
 
+## Pull image van dockerhub
+
+docker pull kvdhoogenhof/novelsite-frontend
+
+docker run -d --rm -v /app/node_modules -p 3000:3000 -e CHOKIDAR_USEPOLLING=true --name frontend kvdhoogenhof/novelsite-frontend
 
 # Getting Started with Create React App
 
