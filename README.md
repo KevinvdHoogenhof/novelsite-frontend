@@ -1,6 +1,6 @@
 # Run app met Docker
 
-## Zorg dat de api en database ook als container runnen. De instructies hiervoor kun je vinden op https://github.com/KevinvdHoogenhof/novelsite-backend#readme
+Zorg dat de api en database ook als container runnen. De instructies hiervoor kun je vinden op https://github.com/KevinvdHoogenhof/novelsite-backend#readme
 
 ## Zelf maken van een docker image:
 docker build -t novelsite/frontend .
