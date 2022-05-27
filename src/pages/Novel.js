@@ -7,14 +7,14 @@ var title = 'title';
 var author = 'author';
 var coverImage = 'coverImage';
 var description = 'description';
-var genre = 'genre';
+//var genre = 'genre';
 function imageExists(image_url){
     var http = new XMLHttpRequest();
   
     http.open('HEAD', image_url, false);
     http.send();
   
-    return http.status != 404;
+    return http.status !== 404;
 }
 export default function Novel(){
     const { id } = useParams();
