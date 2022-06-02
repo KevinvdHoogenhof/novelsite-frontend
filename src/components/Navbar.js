@@ -1,6 +1,15 @@
+import { Button } from 'bootstrap';
 import React, { useState,useEffect }  from 'react';
+import { Redirect } from 'react-router-dom';
 import "../styles.css";
 import useToken from './useToken';
+
+function Logout(){
+  //console.log("test")
+  localStorage.removeItem("token")
+  window.location.href = "/"
+}
+
 
 var name = 'name';
 const Navbar= () =>{
@@ -42,8 +51,20 @@ const Navbar= () =>{
           Add Novel
         </a>
       </li>
+      <li className="nav-item">
+        <a className="nav-link" href={`/favorites/${(info !== undefined) ? info.id : 1}`}>
+          Favorites
+        </a>
+      </li>
+      <li className="logout">
+        <a className="nav-link" onClick={() => {Logout()}}>
+          Logout
+        </a>
+      </li>
       <li className="login">
-        {(info !== undefined) ? info.name : name}
+        <a className="nav-link">
+        Welcome, {(info !== undefined) ? info.name : name}
+        </a>
       </li>
     </ul>
   </div>

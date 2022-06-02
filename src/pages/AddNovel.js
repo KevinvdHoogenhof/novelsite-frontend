@@ -18,10 +18,20 @@ export default function AddNovel() {
     });
   };
 
-  const handleSubmit = (e) => {
-    alert('A novel was submitted: Title=' + values.title);
-    e.preventDefault();
-  }
+  const handleSubmit = event => {
+    event.preventDefault();
+    let fetchUrl = 'https://localhost:9001/Novel?title='+values.title+'&author='+values.author+"&coverimage="+values.coverimage+"&description="+values.description;
+    console.log(fetchUrl);
+    fetch(fetchUrl,{
+        method: 'POST',
+        credentials: 'include',
+        headers:{   
+            'accept': 'text/plain'
+        }
+    });
+    //console.log("test");
+    window.location.href = "/";
+  };
 
   return (
         <form onSubmit={handleSubmit} className="text-center" style={{width: "100%"}}>
